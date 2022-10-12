@@ -32,6 +32,11 @@
             <version>5.3.2</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-maven</artifactId>
+            <version>1.9.8</version>
+        </dependency>
     </dependencies>
 
 </project>
