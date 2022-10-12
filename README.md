@@ -22,4 +22,5 @@ Trabalho Prático 2 - Teste de Software
 - [ ] Realizar cálculos de cobertura de testes, e indicar como os cálculos de cobertura foram feitos (manualmente ou
   via software);
 - [ ] Preparar documento final;
-- [ ] Preparar apresentação.
+- [ ] Preparar apresentação;
+- [ ] Melhorar código da agencia-turismo.

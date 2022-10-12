@@ -1,0 +1,4 @@
+01/07/2021;07/07/2021;Rio de Janeiro;500.00;Copacabana Hotel
+10/07/2021;17/07/2021;Araxa;400.00;Termas de Araxa
+15/07/2021;22/07/2021;Vitoria;250.00;Beira Mar
+05/07/2021;12/07/2021;Fortaleza;480.00;Futuro Praia Hotel
