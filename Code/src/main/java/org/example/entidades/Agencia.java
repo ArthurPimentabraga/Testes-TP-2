@@ -1,13 +1,14 @@
-package org.example;
+package org.example.entidades;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import lombok.Data;
+import org.example.produtos.Hospedagem;
+import org.example.produtos.PassagemAeria;
+import org.example.produtos.Produto;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
+@Data
 public class Agencia {
 
     private int codigo;
@@ -171,28 +172,6 @@ public class Agencia {
         }
 
         return false;
-    }
-
-    // Getters and Setters
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public ArrayList<Cliente> getClientes() {
-        return clientes;
     }
 
 }

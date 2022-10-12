@@ -1,7 +1,9 @@
-package org.example;
+package org.example.produtos;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.text.SimpleDateFormat;
-import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
@@ -9,9 +11,12 @@ import java.util.Date;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class Hospedagem extends Produto{
+@Data
+@EqualsAndHashCode(callSuper = false)
+public class Hospedagem extends Produto {
+
     private static final String DESC = "Hospedagem";
-    private static double VALOR_DIARIA_PADRAO = 350.00;
+    private static final double VALOR_DIARIA_PADRAO = 350.00;
     private double valorDiaria;
     private String nomeHotel;
 
@@ -109,21 +114,4 @@ public class Hospedagem extends Produto{
                 " | Nome Hotel: " + this.nomeHotel;
     }
 
-    // Getters and Setters
-
-    public double getValorDiaria() {
-        return valorDiaria;
-    }
-
-    public void setValorDiaria(double valorDiaria) {
-        this.valorDiaria = valorDiaria;
-    }
-
-    public String getNomeHotel() {
-        return nomeHotel;
-    }
-
-    public void setNomeHotel(String nomeHotel) {
-        this.nomeHotel = nomeHotel;
-    }
 }

@@ -1,13 +1,16 @@
-package org.example;
+package org.example.entidades;
 
+import lombok.Data;
 import org.example.categoriasCliente.Bronze;
 import org.example.categoriasCliente.Ouro;
 import org.example.categoriasCliente.Prata;
 import org.example.interfaces.ICategoria;
+import org.example.produtos.Produto;
+
 import java.text.ParseException;
 import java.util.ArrayList;
 
-
+@Data
 public class Cliente {
 
     private String nome;
@@ -113,45 +116,4 @@ public class Cliente {
                 " | Categoria: " + this.categoria;
     }
 
-    // Getters and Setters
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public Long getPontuacao() {
-        return pontuacao;
-    }
-
-    public void setPontuacao(Long pontuacao) {
-        this.pontuacao = pontuacao;
-    }
-
-    public ICategoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(ICategoria categoria) {
-        this.categoria = categoria;
-    }
-
-    public ArrayList<Produto> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(ArrayList<Produto> produtos) {
-        this.produtos = produtos;
-    }
 }

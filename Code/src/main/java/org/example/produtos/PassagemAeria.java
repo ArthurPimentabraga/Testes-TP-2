@@ -1,4 +1,7 @@
-package org.example;
+package org.example.produtos;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -7,10 +10,11 @@ import java.util.Date;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class PassagemAeria extends Produto {
 
-    private final static String DESC = "Passagem Aérea";
+    private static final String DESC = "Passagem Aérea";
     private int nVoo;
     private double precoPassagem;
 
@@ -110,13 +114,4 @@ public class PassagemAeria extends Produto {
                 " | Preço base da passagem: " + this.precoPassagem;
     }
 
-    // Getters and Setters
-
-    public int getnVoo() {
-        return nVoo;
-    }
-
-    public void setnVoo(int nVoo) {
-        this.nVoo = nVoo;
-    }
 }

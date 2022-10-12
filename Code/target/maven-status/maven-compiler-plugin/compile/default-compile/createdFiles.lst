@@ -1,10 +1,11 @@
 org/example/Main.class
-org/example/Hospedagem.class
-org/example/Agencia.class
-org/example/Cliente.class
+org/example/entidades/Cliente.class
+org/example/produtos/PassagemAeria.class
+org/example/entidades/Agencia.class
+org/example/produtos/Produto.class
+org/example/utils/CarregamentoDados.class
 org/example/interfaces/ICategoria.class
-org/example/PassagemAeria.class
 org/example/categoriasCliente/Prata.class
 org/example/categoriasCliente/Ouro.class
-org/example/Produto.class
 org/example/categoriasCliente/Bronze.class
+org/example/produtos/Hospedagem.class
