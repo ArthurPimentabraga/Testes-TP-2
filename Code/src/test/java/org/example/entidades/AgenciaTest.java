@@ -8,13 +8,16 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class AgenciaTest {
+class AgenciaTest {
+
     private Agencia agencia;
     private Hospedagem hospedagem;
 
+    // Colocar annotation Before (ta quebrando por isso)
+
+
     //============================================================
     // Adicionar Cliente
-
     @Test
     @DisplayName("Para nome igual a null, adicionarCliente deve retornar null")
     void test01() {
@@ -58,6 +61,12 @@ public class AgenciaTest {
         assertEquals(expected, output);
     }
 
+    //     @Test
+    //    @DisplayName("Se ocorrer uma exception, não deve propaga-la")
+    //    void test03() {
+    //
+    //    }
+
 
     //==============================================================
     // Localizar Cliente
@@ -95,6 +104,12 @@ public class AgenciaTest {
         var output = Agencia.localizarCliente("123.123.123-01");
         assertNull(output);
     }
+
+    //    @Test
+    //    @DisplayName("Se ocorrer uma exception, não deve propaga-la")
+    //    void test03() {
+    //
+    //    }
 
     //==============================================================
     // Localizar Produto
@@ -139,4 +154,11 @@ public class AgenciaTest {
         var output = Agencia.localizarProduto("Belo Horizonte", "H");
         assertEquals(hospedagem, output);
     }
+
+    //    @Test
+    //    @DisplayName("Se ocorrer uma exception, não deve propaga-la")
+    //    void test03() {
+    //
+    //    }
+
 }
