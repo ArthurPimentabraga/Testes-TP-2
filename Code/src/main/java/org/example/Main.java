@@ -19,17 +19,7 @@ public class Main {
         carregarDadosClientes();
         carregarDadosHospedagem();
         carregarDadosVoos();
-        printMain();
         printMenu();
-    }
-
-    private static void printMain() {
-        System.out.println(" _________________________          _____                                 ");
-        System.out.println("|                         \\          \\ U \\__      _____                ");
-        System.out.println("|      Não interessa       \\__________\\   \\/_______\\___\\____________ ");
-        System.out.println("|        by Caram          /          < /_/   .....................  `-.  ");
-        System.out.println("|_________________________/            `-----------,----,--------------'  ");
-        System.out.println("                                                 _/____/                  ");
     }
 
     private static void printMenu() {

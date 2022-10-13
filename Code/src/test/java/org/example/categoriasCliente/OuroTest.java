@@ -1,5 +1,6 @@
 package org.example.categoriasCliente;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,10 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OuroTest {
 
-    private Ouro ouro;
+    private static Ouro ouro;
 
-    @BeforeEach
-    public void init() {
+    @BeforeAll
+    public static void init() {
         ouro = new Ouro();
     }
 
