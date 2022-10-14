@@ -37,7 +37,7 @@ public class Agencia {
             return novoCliente;
 
         } catch (Exception exception) {
-            System.out.println("Erro ao personalizar produto: " + exception);
+            System.out.println("Erro ao adicionar cliente: " + exception);
             return null;
         }
     }

@@ -96,13 +96,13 @@ public class Cliente {
                 return;
             }
 
-            if(this.pontuacao >= Prata.getPontuacaoMinima() && this.pontuacao < Ouro.getPontuacaoMinima()) {
+            if(this.pontuacao >= Prata.getPontuacaoMinima() && this.pontuacao < Ouro.PONTUACAO_MINIMA) {
                 this.categoria = (ICategoria) new Prata();
                 System.out.println("O cliente " + this.nome + " subiu de categoria. Categoria atual: Prata");
                 return;
             }
 
-            if(this.pontuacao >= Ouro.getPontuacaoMinima()) {
+            if(this.pontuacao >= Ouro.PONTUACAO_MINIMA) {
                 this.categoria = (ICategoria) new Ouro();
                 System.out.println("O cliente " + this.nome + " subiu de categoria. Categoria atual: Ouro");
             }
