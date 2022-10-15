@@ -52,4 +52,22 @@ class CarregamentoDadosTest {
 
     }
 
+    @Test
+    @DisplayName("Para o arquivo existente, carregarDadosPasseio não deve propagar um FileNotFoundException")
+    void test06() {
+        assertDoesNotThrow(
+                () -> CarregamentoDados.carregarDadosPasseio()
+        );
+
+    }
+
+    @Test
+    @DisplayName("Para o arquivo existente, carregarDadosPasseio não deve propagar um ParseException")
+    void test07() {
+        assertDoesNotThrow(
+                () -> CarregamentoDados.carregarDadosPasseio()
+        );
+
+    }
+
 }

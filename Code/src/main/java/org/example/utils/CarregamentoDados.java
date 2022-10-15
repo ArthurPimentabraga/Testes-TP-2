@@ -20,6 +20,8 @@ public class CarregamentoDados {
     private static final String arquivoHospedagem = "src/main/java/org/example/dados/hospedagem.txt";
     private static final String arquivoPassagem = "src/main/java/org/example/dados/passagem.txt";
 
+    private static final String arquivoPasseio = "src/main/java/org/example/dados/passeio.txt";
+
     public static void carregarDadosClientes() throws FileNotFoundException {
         Scanner clientes = new Scanner(new File(arquivoClientes));
 
@@ -54,7 +56,7 @@ public class CarregamentoDados {
 
     public static void carregarDadosPasseio() throws FileNotFoundException, ParseException {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        Scanner tour = new Scanner(new File("Code/src/main/java/org/example/dados/passeio.txt"));
+        Scanner tour = new Scanner(new File(arquivoPasseio));
         while (tour.hasNextLine()) {
             String tourLinha = tour.nextLine();
             String[] passeio = tourLinha.split(";");
