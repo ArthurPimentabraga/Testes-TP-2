@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import org.example.entidades.Agencia;
 import org.example.produtos.Hospedagem;
 import org.example.produtos.PassagemAeria;
+import org.example.produtos.Passeio;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -43,6 +44,17 @@ public class CarregamentoDados {
             String[] passagem = passagemLinha.split(";");
             PassagemAeria nova = new PassagemAeria((formato.parse(passagem[0])),formato.parse(passagem[1]),passagem[2],Integer.parseInt(passagem[3]),Double.parseDouble(passagem[4]));
             Agencia.adicionarProduto(nova);
+        }
+    }
+
+    public static void carregarDadosPasseio() throws FileNotFoundException, ParseException {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Scanner tour = new Scanner(new File("Code/src/main/java/org/example/dados/passeio.txt"));
+        while (tour.hasNextLine()) {
+            String tourLinha = tour.nextLine();
+            String[] passeio = tourLinha.split(";");
+            Passeio novo = new Passeio((formato.parse(passeio[0])),formato.parse(passeio[1]),passeio[2],Double.parseDouble(passeio[3]),Double.parseDouble(passeio[4]));
+            Agencia.adicionarProduto(novo);
         }
     }
 
