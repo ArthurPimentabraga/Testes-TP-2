@@ -111,6 +111,13 @@ class PassagemAeriaTest {
         assertNotNull(output);
     }
 
+    @Test
+    @DisplayName("Para parametros de criar um passeio válidos , arquirirPasseio não deve retornar null")
+    void test12() {
+        var output = PassagemAeria.arquirirPassagemAeria(new Date(), new Date(), "Teste", 123, 3509);
+        assertNotNull(output);
+    }
+
     private Date createDate(int plusDays) {
         LocalDate diaCompra = LocalDate.now().plusDays(plusDays);
         Instant instant = Instant.from(diaCompra.atStartOfDay(ZoneId.of("GMT")));

@@ -72,16 +72,8 @@ public class Passeio extends Produto {
             System.out.println("Passeio escolhido: ");
             String passeio = teclado.nextLine();
 
-            System.out.println("Confirma escolha? Digite S ou N");
-            String opcao = teclado.nextLine().toUpperCase();
+            return arquirirPasseio(inicio, retorno, passeio);
 
-            if (opcao.equals("S")) {
-                System.out.println("Passeio adquirido com sucesso!");
-                return new Passeio(inicio, retorno, passeio, VALOR_KM_PADRAO, DISTANCIA_MINIMA);
-            }
-
-            System.out.println("Pedido cancelado");
-            return null;
         } catch (NoSuchElementException noSuchElementException) {
             System.out.println("Erro ao ler entrada. Nenhuma informaçao encontrada! Erro: " + noSuchElementException);
             return null;
@@ -92,6 +84,13 @@ public class Passeio extends Produto {
             System.out.println("Erro ao personalizar passeio!");
             return null;
         }
+
+
+    }
+
+    public static Passeio arquirirPasseio(Date inicio, Date retorno, String passeio) {
+        System.out.println("Passeio adquirido com sucesso!");
+        return new Passeio(inicio, retorno, passeio, VALOR_KM_PADRAO, DISTANCIA_MINIMA);
     }
 
     @Override
