@@ -19,6 +19,7 @@ public class Main {
         carregarDadosClientes();
         carregarDadosHospedagem();
         carregarDadosVoos();
+        carregarDadosPasseio();
         printMenu();
     }
 
@@ -63,7 +64,7 @@ public class Main {
             case 2:
                 System.out.println("Informe o destino: ");
                 String destino = teclado.nextLine();
-                System.out.println("Informe \"H\" para Hospedagem e \"P\" para passagem aérea: ");
+                System.out.println("Informe \"H\" para Hospedagem; \"P\" para passagem aérea; \"T\" para passeio: ");
                 String opcao = teclado.nextLine().toUpperCase();
                 Produto produto = Agencia.personalizaProduto(destino,opcao);
                 if (produto != null) {
@@ -77,7 +78,7 @@ public class Main {
                 if(cliente!=null){
                     System.out.println("Informe o destino: ");
                     destino = teclado.nextLine();
-                    System.out.println("Informe \"H\" para Hospedagem e \"P\" para passagem aérea: ");
+                    System.out.println("Informe \"H\" para Hospedagem; \"P\" para passagem aérea e \"T\" para passeio: ");
                     opcao = teclado.nextLine().toUpperCase();
                     cliente.adicionarProduto(destino,opcao);
                 }
@@ -88,7 +89,7 @@ public class Main {
             case 4:
                 System.out.println("Informe o destino a ser buscado: ");
                 String buscaProduto = teclado.nextLine();
-                System.out.println("Informe \"H\" para Hospedagem e \"P\" para passagem aérea: ");
+                System.out.println("Informe \"H\" para Hospedagem; \"P\" para passagem aérea e \"T\" para passeio: ");
                 opcao = teclado.nextLine().toUpperCase();
                 Produto produtoBuscado = Agencia.localizarProduto(buscaProduto,opcao);
                 if (produtoBuscado != null) produtoBuscado.toString();
