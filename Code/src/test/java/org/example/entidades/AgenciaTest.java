@@ -2,6 +2,7 @@ package org.example.entidades;
 
 import org.example.produtos.Hospedagem;
 import org.example.produtos.PassagemAeria;
+import org.example.produtos.Passeio;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,6 +22,8 @@ class AgenciaTest {
     private Hospedagem hospedagem;
     private PassagemAeria passagem;
 
+    private Passeio passeio;
+
     @BeforeEach
     public void init() {
         Agencia.produtos = new ArrayList<>();
@@ -34,8 +37,15 @@ class AgenciaTest {
                 new Date(), new Date(), "Orlando", 666, 600.0
         );
 
+        passeio = new Passeio(
+                new Date(), new Date(), "Rio de Janeiro", 30.0, 0
+        );
+
+
+
         Agencia.produtos.add(hospedagem);
         Agencia.produtos.add(passagem);
+        Agencia.adicionarProduto(passeio);
 
         cliente = new Cliente("Nome", "123.123.123-02");
         Agencia.clientes = new ArrayList<>();
@@ -178,6 +188,13 @@ class AgenciaTest {
     void test98() {
         var output = Agencia.localizarProduto("Orlando", "P");
         assertEquals(passagem, output);
+    }
+
+    @Test
+    @DisplayName("Para destino e opção validos para PassagemAeria, localizarProduto deve retornar o Produto desejado")
+    void test99() {
+        var output = Agencia.localizarProduto("Rio de Janeiro", "T");
+        assertEquals(passeio, output);
     }
 
     //==============================================================
