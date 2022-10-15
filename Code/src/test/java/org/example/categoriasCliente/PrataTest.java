@@ -39,4 +39,42 @@ class PrataTest {
         var output = prata.calcularPontuacao(pontoBase);
         assertEquals(15, output);
     }
+
+    @Test
+    @DisplayName("Para pontoBase igual a 5, o pontuação final deve ser 7")
+    void test04() {
+        var pontoBase = 5;
+        var output = prata.calcularPontuacao(pontoBase);
+        assertEquals(7, output);
+    }
+
+    @Test
+    @DisplayName("Para precoBase menor ou igual a zero, o preço final deve ser 0")
+    void test05() {
+        var precoBase = -1;
+        var output = prata.calcularPrecoFinal(precoBase);
+        assertEquals(0, output);
+    }
+
+    @Test
+    @DisplayName("Para pontoBase menor ou igual a zero, o pontuação final deve ser 0")
+    void test06() {
+        var pontoBase = -1;
+        var output = prata.calcularPontuacao(pontoBase);
+        assertEquals(0, output);
+    }
+
+    @Test
+    @DisplayName("Para a categoria ouro criada, toString não deve retornar null")
+    void test07() {
+        var output = prata.toString();
+        assertNotNull(output);
+    }
+
+    @Test
+    @DisplayName("Para a categoria ouro criada, getPontuacaoMinima deve retornar 500")
+    void test08() {
+        var output = Prata.getPontuacaoMinima();
+        assertEquals(500, output);
+    }
 }

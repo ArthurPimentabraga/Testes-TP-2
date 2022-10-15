@@ -2,6 +2,7 @@ package org.example.entidades;
 
 import lombok.Data;
 import org.example.categoriasCliente.Bronze;
+import org.example.categoriasCliente.Diamante;
 import org.example.categoriasCliente.Ouro;
 import org.example.categoriasCliente.Prata;
 import org.example.interfaces.ICategoria;
@@ -96,15 +97,20 @@ public class Cliente {
                 return;
             }
 
-            if(this.pontuacao >= Prata.getPontuacaoMinima() && this.pontuacao < Ouro.PONTUACAO_MINIMA) {
+            if(this.pontuacao >= Prata.getPontuacaoMinima() && this.pontuacao < Ouro.getPontuacaoMinima()) {
                 this.categoria = (ICategoria) new Prata();
                 System.out.println("O cliente " + this.nome + " subiu de categoria. Categoria atual: Prata");
                 return;
             }
 
-            if(this.pontuacao >= Ouro.PONTUACAO_MINIMA) {
+            if(this.pontuacao >= Ouro.getPontuacaoMinima() && this.pontuacao < Diamante.PONTUACAO_MINIMA) {
                 this.categoria = (ICategoria) new Ouro();
                 System.out.println("O cliente " + this.nome + " subiu de categoria. Categoria atual: Ouro");
+            }
+
+            if(this.pontuacao >= Diamante.PONTUACAO_MINIMA) {
+                this.categoria = (ICategoria) new Diamante();
+                System.out.println("O cliente " + this.nome + " subiu de categoria. Categoria atual: Diamante");
             }
         } catch (Exception exception) {
             System.out.println("Erro ao verificar/modificar categoria. Cliente " + this.nome + " - Pontuação atual: " + this.pontuacao);

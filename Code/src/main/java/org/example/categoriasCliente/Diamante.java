@@ -2,11 +2,10 @@ package org.example.categoriasCliente;
 
 import org.example.interfaces.ICategoria;
 
-public class Prata implements ICategoria {
-
-    private static final float DESCONTO = 0.1F;
-    private static final float PONTUACAO = 0.5F;
-    private static final int PONTUACAO_MINIMA = 500;
+public class Diamante implements ICategoria {
+    private static final float DESCONTO = 0.2F;
+    private static final float PONTUACAO = 1.5F;
+    public static final int PONTUACAO_MINIMA = 1500;
 
     public double calcularPrecoFinal(double precoBase) {
         if (precoBase < 0) {
@@ -32,13 +31,10 @@ public class Prata implements ICategoria {
         return PONTUACAO;
     }
 
-    public static float getPontuacaoMinima() {
-        return PONTUACAO_MINIMA;
-    }
+    //To String
 
-    //ToString
     public String toString(){
-        String descricao = "Prata";
-        return descricao;}
-
+        String descricao = "Diamante";
+        return descricao;
+    }
 }

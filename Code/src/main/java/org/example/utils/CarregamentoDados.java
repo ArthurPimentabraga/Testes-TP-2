@@ -15,8 +15,13 @@ import java.util.Scanner;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CarregamentoDados {
 
+    private static final String arquivoClientes = "src/main/java/org/example/dados/clientes.txt";
+    private static final String arquivoHospedagem = "src/main/java/org/example/dados/hospedagem.txt";
+    private static final String arquivoPassagem = "src/main/java/org/example/dados/passagem.txt";
+
     public static void carregarDadosClientes() throws FileNotFoundException {
-        Scanner clientes = new Scanner(new File("src/main/java/org/example/dados/clientes.txt"));
+        Scanner clientes = new Scanner(new File(arquivoClientes));
+
         while (clientes.hasNextLine()) {
             String clienteLinha = clientes.nextLine();
             String[] cliente = clienteLinha.split(";");
@@ -26,7 +31,7 @@ public class CarregamentoDados {
 
     public static void carregarDadosHospedagem() throws FileNotFoundException, ParseException {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        Scanner hoteis = new Scanner(new File("src/main/java/org/example/dados/hospedagem.txt"));
+        Scanner hoteis = new Scanner(new File(arquivoHospedagem));
         while (hoteis.hasNextLine()) {
             String hospedagemLinha = hoteis.nextLine();
             String[] hotel = hospedagemLinha.split(";");
@@ -37,7 +42,7 @@ public class CarregamentoDados {
 
     public static void carregarDadosVoos() throws FileNotFoundException, ParseException {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        Scanner voos = new Scanner(new File("src/main/java/org/example/dados/passagem.txt"));
+        Scanner voos = new Scanner(new File(arquivoPassagem));
         while (voos.hasNextLine()) {
             String passagemLinha = voos.nextLine();
             String[] passagem = passagemLinha.split(";");

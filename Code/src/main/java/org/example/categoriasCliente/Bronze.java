@@ -9,10 +9,16 @@ public class Bronze implements ICategoria {
     private static final int PONTUACAO_MINIMA = 100;
 
     public double calcularPrecoFinal(double precoBase) {
+        if (precoBase < 0) {
+            return 0;
+        }
         return precoBase - (precoBase * getDESCONTO());
     }
 
     public int calcularPontuacao(int pontoBase) {
+        if (pontoBase < 0) {
+            return 0;
+        }
         return pontoBase + (int)(pontoBase * getPONTUACAO());
     }
 

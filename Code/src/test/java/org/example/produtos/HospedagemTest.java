@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class HospedagemTest {
 
@@ -23,5 +23,33 @@ class HospedagemTest {
     void test01() {
         var output = Hospedagem.personalizaHospedagem(null);
         assertNull(output);
+    }
+
+    @Test
+    @DisplayName("Para o produto criado com uma diferença de dias da data atual de 0 dias, calcularPreco deve retornar 0")
+    void test02() {
+        var output = hospedagem.calcularPreco();
+        assertEquals(0, output);
+    };
+
+    @Test
+    @DisplayName("Para o produto criado com uma diferença de dias da data atual de 0 dias, calcularPontuacao deve retornar 0")
+    void test03() {
+        var output = hospedagem.calcularPontuacao();
+        assertEquals(0, output);
+    }
+
+    @Test
+    @DisplayName("Para um produto criado, a variável nomeHotel não pode ser nula")
+    void test4() {
+        var output = hospedagem.getNomeHotel();
+        assertNotNull(output);
+    }
+
+    @Test
+    @DisplayName("Para um produto criado, a variável valorDiaria não pode ser nula")
+    void test5() {
+        var output = hospedagem.getValorDiaria();
+        assertNotNull(output);
     }
 }

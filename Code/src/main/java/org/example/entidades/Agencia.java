@@ -13,8 +13,8 @@ public class Agencia {
 
     private int codigo;
     private String nome;
-    private static ArrayList<Cliente> clientes = new ArrayList<>();
-    private static ArrayList<Produto> produtos = new ArrayList<>();
+    public static ArrayList<Cliente> clientes = new ArrayList<>();
+    public static ArrayList<Produto> produtos = new ArrayList<>();
     static Scanner teclado = new Scanner(System.in);
 
     public Agencia(int cogido, String nome) {
@@ -50,7 +50,7 @@ public class Agencia {
      * metodo para adicionar um produto personalizado para um destino informado pelo
      * cliente
      */
-    public static Produto personalizaProduto(String destino, String opcao) {
+    public static Produto personalizaProduto(String destino, String opcao) { // AQUI
         try {
             Produto produto = null;
             switch (opcao) {
@@ -158,7 +158,7 @@ public class Agencia {
     }
 
     public static void listClientes() {
-        if (validaListaClientes()) return;
+        if (validaListaClientes()) return; // AQUI
 
         for (Cliente cliente : clientes) {
             System.out.println(cliente);
