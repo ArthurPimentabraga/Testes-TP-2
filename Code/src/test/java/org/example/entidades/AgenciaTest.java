@@ -1,20 +1,46 @@
 package org.example.entidades;
 
 import org.example.produtos.Hospedagem;
+import org.example.produtos.PassagemAeria;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 class AgenciaTest {
 
-    private Agencia agencia;
+    private Cliente cliente;
     private Hospedagem hospedagem;
+    private PassagemAeria passagem;
 
-    // Colocar annotation Before (ta quebrando por isso)
+    @BeforeEach
+    public void init() {
+        Agencia.produtos = new ArrayList<>();
+        Agencia.clientes = new ArrayList<>();
 
+        hospedagem = new Hospedagem(
+                new Date(), new Date(), "Belo Horizonte", 100, "Nome hotel"
+        );
+
+        passagem = new PassagemAeria(
+                new Date(), new Date(), "Orlando", 666, 600.0
+        );
+
+        Agencia.produtos.add(hospedagem);
+        Agencia.produtos.add(passagem);
+
+        cliente = new Cliente("Nome", "123.123.123-02");
+        Agencia.clientes = new ArrayList<>();
+        Agencia.clientes.add(cliente);
+    }
 
     //============================================================
     // Adicionar Cliente
@@ -49,7 +75,7 @@ class AgenciaTest {
     @Test
     @DisplayName("Para cpf menor que 14 caracteres, adicionarCliente deve retornar null")
     void test05() {
-        var output = Agencia.adicionarCliente("José Silva", "12312312312312");
+        var output = Agencia.adicionarCliente("José Silva", "1231231231231");
         assertNull(output);
     }
 
@@ -58,15 +84,11 @@ class AgenciaTest {
     void test06() {
         var output = Agencia.adicionarCliente("José Silva", "123.123.123-01");
         var expected = Agencia.localizarCliente("123.123.123-01");
-        assertEquals(expected, output);
+
+        assertNotNull(expected);
+        assertEquals(expected.getCpf(), output.getCpf());
+        assertEquals(expected.getNome(), output.getNome());
     }
-
-    //     @Test
-    //    @DisplayName("Se ocorrer uma exception, não deve propaga-la")
-    //    void test03() {
-    //
-    //    }
-
 
     //==============================================================
     // Localizar Cliente
@@ -87,13 +109,14 @@ class AgenciaTest {
     @Test
     @DisplayName("Para cpf não cadastrado, localizarCliente deve retornar null")
     void test09() {
-        var output = Agencia.localizarCliente("123.123.123-01");
+        var output = Agencia.localizarCliente("000.000.000-00");
         assertNull(output);
     }
 
     @Test
     @DisplayName("Caso não tenha clientes cadastrados, localizarCliente deve retornar null")
     void test10() {
+        Agencia.clientes = new ArrayList<>();
         var output = Agencia.localizarCliente("123.123.123-01");
         assertNull(output);
     }
@@ -101,21 +124,16 @@ class AgenciaTest {
     @Test
     @DisplayName("Caso cpf esteja cadastrado, localizarCliente deve retornar o cliente passado")
     void test11() {
-        var output = Agencia.localizarCliente("123.123.123-01");
-        assertNull(output);
+        var output = Agencia.localizarCliente("123.123.123-02");
+        assertEquals(cliente, output);
     }
-
-    //    @Test
-    //    @DisplayName("Se ocorrer uma exception, não deve propaga-la")
-    //    void test03() {
-    //
-    //    }
 
     //==============================================================
     // Localizar Produto
     @Test
     @DisplayName("Para lista de produtos vazia, localizar produto deve retornar null")
     void test12() {
+        Agencia.produtos = new ArrayList<>();
         var output = Agencia.localizarProduto("Belo Horizonte", "P");
         assertNull(output);
     }
@@ -137,7 +155,7 @@ class AgenciaTest {
     @Test
     @DisplayName("Para destino inválido, localizarProduto deve retornar null")
     void test15() {
-        var output = Agencia.localizarProduto("", "H");
+        var output = Agencia.localizarProduto("Montes Claros", "H");
         assertNull(output);
     }
 
@@ -155,10 +173,59 @@ class AgenciaTest {
         assertEquals(hospedagem, output);
     }
 
-    //    @Test
-    //    @DisplayName("Se ocorrer uma exception, não deve propaga-la")
-    //    void test03() {
-    //
-    //    }
+    @Test
+    @DisplayName("Para destino e opção validos para PassagemAeria, localizarProduto deve retornar o Produto desejado")
+    void test98() {
+        var output = Agencia.localizarProduto("Orlando", "P");
+        assertEquals(passagem, output);
+    }
+
+    //==============================================================
+    // Valida lista clientes
+
+    @Test
+    @DisplayName("Para lista de clientes nula, deve retornar TRUE")
+    void test97() {
+        Agencia.clientes = null;
+        var output = Agencia.validaListaClientes();
+        assertTrue(output);
+    }
+
+    @Test
+    @DisplayName("Para lista de clientes vazia, deve retornar TRUE")
+    void test96() {
+        Agencia.clientes = new ArrayList<>();
+        var output = Agencia.validaListaClientes();
+        assertTrue(output);
+    }
+
+    @Test
+    @DisplayName("Para lista de clientes válida, deve retornar FALSE")
+    void test95() {
+        var output = Agencia.validaListaClientes();
+        assertFalse(output);
+    }
+
+    //==============================================================
+    // Personaliza produto
+
+//    @Test
+//    @DisplayName("Para opção H deve criar uma nova hospedagem")
+//    void test94() {
+//
+//    }
+//
+//    @Test
+//    @DisplayName("Para opção P deve criar uma nova Passagem Aérea")
+//    void test93() {
+//
+//    }
+
+    @Test
+    @DisplayName("Para opção inexistente deve retornar null")
+    void test92() {
+        var output = Agencia.personalizaProduto("Miami", "J");
+        assertNull(output);
+    }
 
 }

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class OuroTest {
 
@@ -48,4 +49,33 @@ class OuroTest {
         assertEquals(10, output);
     }
 
+    @Test
+    @DisplayName("Para precoBase menor ou igual a zero, o preço final deve ser 0")
+    void test05() {
+        var precoBase = -1;
+        var output = ouro.calcularPrecoFinal(precoBase);
+        assertEquals(0, output);
+    }
+
+    @Test
+    @DisplayName("Para pontoBase menor ou igual a zero, o pontuação final deve ser 0")
+    void test06() {
+        var pontoBase = -1;
+        var output = ouro.calcularPontuacao(pontoBase);
+        assertEquals(0, output);
+    }
+
+    @Test
+    @DisplayName("Para a categoria ouro criada, toString não deve retornar null")
+    void test07() {
+        var output = ouro.toString();
+        assertNotNull(output);
+    }
+
+    @Test
+    @DisplayName("Para a categoria ouro criada, getPontuacaoMinima deve retornar 1000")
+    void test08() {
+        var output = Ouro.getPontuacaoMinima();
+        assertEquals(1000, output);
+    }
 }

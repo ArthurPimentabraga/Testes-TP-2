@@ -32,11 +32,11 @@ public class PassagemAeria extends Produto {
         LocalDate dateRetorno = LocalDate.parse(formatDate.format(this.inicio));
         long noOfDaysBetween = ChronoUnit.DAYS.between(diaCompra, dateRetorno);
 
-        if(noOfDaysBetween<7){
+        if (noOfDaysBetween<7) {
             return this.precoPassagem * 2;
         }
 
-        if (noOfDaysBetween<60){
+        if (noOfDaysBetween<60) {
             return this.precoPassagem + (this.precoPassagem * 0.5);
         }
 
