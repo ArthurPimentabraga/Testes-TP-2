@@ -47,6 +47,7 @@ public class Hospedagem extends Produto {
 
     @Override
     public int calcularPontuacao() {
+
         return (int) (calcularPreco()*0.1);
     }
 

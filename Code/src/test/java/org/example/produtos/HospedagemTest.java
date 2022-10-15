@@ -59,4 +59,9 @@ class HospedagemTest {
         var output = Hospedagem.arquirirHospedagem(new Date(), new Date(), "Teste", "Teste");
         assertNotNull(output);
     }
+    @Test
+    @DisplayName("toString não deve retornar null")
+    void test7() {
+        assertNotNull(hospedagem.toString());
+    }
 }

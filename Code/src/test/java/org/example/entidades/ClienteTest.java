@@ -1,5 +1,6 @@
 package org.example.entidades;
 
+import org.example.categoriasCliente.Bronze;
 import org.example.produtos.PassagemAeria;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -54,11 +55,44 @@ class ClienteTest {
     void test03() {
 
     }
-
-
     //============================================================
     // Mudar categoria
 
-
+    @Test
+    @DisplayName("Validar pontuação Bronze") //Não implementado
+    void test06() {
+        var valorEsperado = "O cliente 'sem categoria' subiu de categoria. Categoria atual: Bronze";
+        Cliente cliente = new Cliente("sem categoria","111.231.123-02");
+        cliente.setPontuacao(100);
+        cliente.mudarCategoria();
+        assertEquals(valorEsperado,"O cliente 'sem categoria' subiu de categoria. Categoria atual: Bronze");
+    }
+    @Test
+    @DisplayName("Validar pontuação Prata") //Não implementado
+    void test07() {
+        var valorEsperado = "O cliente 'bronze' subiu de categoria. Categoria atual: Prata";
+        Cliente cliente = new Cliente("bronze","111.231.123-02");
+        cliente.setPontuacao(500);
+        cliente.mudarCategoria();
+        assertEquals(valorEsperado,"O cliente 'bronze' subiu de categoria. Categoria atual: Prata");
+    }
+    @Test
+    @DisplayName("Validar pontuação Ouro") //Não implementado
+    void test08() {
+        var valorEsperado = "O cliente 'prata' subiu de categoria. Categoria atual: Ouro";
+        Cliente cliente = new Cliente("prata","111.231.123-02");
+        cliente.setPontuacao(1000);
+        cliente.mudarCategoria();
+        assertEquals(valorEsperado,"O cliente 'prata' subiu de categoria. Categoria atual: Ouro");
+    }
+    @Test
+    @DisplayName("Validar pontuação Diamante") //Não implementado
+    void test09() {
+        var valorEsperado = "O cliente 'Ouro' subiu de categoria. Categoria atual: Diamante";
+        Cliente cliente = new Cliente("Ouro","111.231.123-02");
+        cliente.setPontuacao(1500);
+        cliente.mudarCategoria();
+        assertEquals(valorEsperado,"O cliente 'Ouro' subiu de categoria. Categoria atual: Diamante");
+    }
 
 }
