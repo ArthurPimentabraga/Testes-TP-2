@@ -85,16 +85,8 @@ public class PassagemAeria extends Produto {
             System.out.println("Preço base do voo: ");
             double precoBase = teclado.nextDouble();
 
-            System.out.println("Confirma escolha?: digite S ou N");
-            String opcao = teclado.next().toUpperCase();
+            return arquirirPassagemAeria(inicio, retorno, destino, voo, precoBase);
 
-            if (opcao.equals("S")) {
-                System.out.println("Passagem aérea adquirida com sucesso!");
-                return new PassagemAeria(inicio, retorno, destino, voo, precoBase);
-            }
-
-            System.out.println("Pedido cancelado");
-            return null;
         } catch (NoSuchElementException noSuchElementException) {
             System.out.println("Erro ao ler entrada. Nenhuma informaçao encontrada! Erro: " + noSuchElementException);
             return null;
@@ -105,6 +97,11 @@ public class PassagemAeria extends Produto {
             System.out.println("Erro ao personalizar passagem aéria!");
             return null;
         }
+    }
+
+    public static PassagemAeria arquirirPassagemAeria(Date inicio, Date retorno, String destino, int voo, double precoBase) {
+        System.out.println("Passagem aérea adquirida com sucesso!");
+        return new PassagemAeria(inicio, retorno, destino, voo, precoBase);
     }
 
     @Override

@@ -59,4 +59,11 @@ class PasseioTest {
         var output = tour.getValorKm();
         assertNotNull(output);
     }
+
+    @Test
+    @DisplayName("Para parametros de criar um passeio válidos , arquirirPasseio não deve retornar null")
+    void test07() {
+        var output = Passeio.arquirirPasseio(new Date(), new Date(), "Teste");
+        assertNotNull(output);
+    }
 }

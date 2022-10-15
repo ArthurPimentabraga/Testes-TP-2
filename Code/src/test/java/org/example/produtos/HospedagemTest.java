@@ -52,4 +52,11 @@ class HospedagemTest {
         var output = hospedagem.getValorDiaria();
         assertNotNull(output);
     }
+
+    @Test
+    @DisplayName("Para parametros de criar um passeio válidos , arquirirPasseio não deve retornar null")
+    void test6() {
+        var output = Hospedagem.arquirirHospedagem(new Date(), new Date(), "Teste", "Teste");
+        assertNotNull(output);
+    }
 }

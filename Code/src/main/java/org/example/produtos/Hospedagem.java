@@ -85,16 +85,9 @@ public class Hospedagem extends Produto {
             String hotel = teclado.nextLine();
 
             System.out.println("Valor diaria nesse hotel: " + VALOR_DIARIA_PADRAO);
-            System.out.println("Confirma escolha? Digite S ou N");
-            String opcao = teclado.nextLine().toUpperCase();
 
-            if (opcao.equals("S")) {
-                System.out.println("Hospedagem adquirida com sucesso!");
-                return new Hospedagem(inicio, retorno, destino, VALOR_DIARIA_PADRAO, hotel);
-            }
+            return arquirirHospedagem(inicio, retorno, destino, hotel);
 
-            System.out.println("Pedido cancelado");
-            return null;
         } catch (NoSuchElementException noSuchElementException) {
             System.out.println("Erro ao ler entrada. Nenhuma informaçao encontrada! Erro: " + noSuchElementException);
             return null;
@@ -105,6 +98,11 @@ public class Hospedagem extends Produto {
             System.out.println("Erro ao personalizar hospedagem!");
             return null;
         }
+    }
+
+    public static Hospedagem arquirirHospedagem(Date inicio, Date retorno, String destino, String hotel) {
+        System.out.println("Hospedagem adquirida com sucesso!");
+        return new Hospedagem(inicio, retorno, destino, VALOR_DIARIA_PADRAO, hotel);
     }
 
     @Override
