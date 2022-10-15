@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class PasseioTest {
 
@@ -22,5 +23,40 @@ class PasseioTest {
     void test01() {
         var valorEsperado=80.0;
         assertEquals(valorEsperado, tour.calcularPreco());
+    }
+
+    @Test
+    @DisplayName("Para valor km igual a zero, calcularPontuacao deve retornar 8")
+    void test02() {
+        var output = tour.calcularPontuacao();
+        assertEquals(8, output);
+    }
+
+    @Test
+    @DisplayName("Para um passeio criado, toString não deve retornar null")
+    void test03() {
+        var output = tour.toString();
+        assertNotNull(output);
+    }
+
+    @Test
+    @DisplayName("Para um destino igual a null, personalizaPasseio deve retornar null")
+    void test04() {
+        var output = Passeio.personalizaPasseio(null);
+        assertEquals(null, output);
+    }
+
+    @Test
+    @DisplayName("Para um passeio criado, a variável distanciaKm não deve retornar null")
+    void test05() {
+        var output = tour.getDistanciaKm();
+        assertNotNull(output);
+    }
+
+    @Test
+    @DisplayName("Para um passeio criado, a variável valorKm não deve retornar null")
+    void test06() {
+        var output = tour.getValorKm();
+        assertNotNull(output);
     }
 }
