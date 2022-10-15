@@ -3,6 +3,7 @@ package org.example.entidades;
 import lombok.Data;
 import org.example.produtos.Hospedagem;
 import org.example.produtos.PassagemAeria;
+import org.example.produtos.Passeio;
 import org.example.produtos.Produto;
 
 import java.util.ArrayList;
@@ -61,6 +62,11 @@ public class Agencia {
                 case "P":
                     produto = PassagemAeria.personalizaPassagem(destino);
                     break;
+
+                case "T":
+                    produto= Passeio.personalizaPasseio(destino);
+                    break;
+
             }
 
             if (produto != null) {
@@ -125,6 +131,13 @@ public class Agencia {
 
                         case "P":
                             if (produto instanceof PassagemAeria) {
+                                resultado = produto;
+                                System.out.println(resultado);
+                            }
+                            break;
+
+                        case "T":
+                            if (produto instanceof Passeio) {
                                 resultado = produto;
                                 System.out.println(resultado);
                             }

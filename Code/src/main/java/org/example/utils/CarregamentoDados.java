@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import org.example.entidades.Agencia;
 import org.example.produtos.Hospedagem;
 import org.example.produtos.PassagemAeria;
+import org.example.produtos.Passeio;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,7 +17,7 @@ import java.util.Scanner;
 public class CarregamentoDados {
 
     public static void carregarDadosClientes() throws FileNotFoundException {
-        Scanner clientes = new Scanner(new File("src/main/java/org/example/dados/clientes.txt"));
+        Scanner clientes = new Scanner(new File("Code/src/main/java/org/example/dados/clientes.txt"));
         while (clientes.hasNextLine()) {
             String clienteLinha = clientes.nextLine();
             String[] cliente = clienteLinha.split(";");
@@ -26,7 +27,7 @@ public class CarregamentoDados {
 
     public static void carregarDadosHospedagem() throws FileNotFoundException, ParseException {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        Scanner hoteis = new Scanner(new File("src/main/java/org/example/dados/hospedagem.txt"));
+        Scanner hoteis = new Scanner(new File("Code/src/main/java/org/example/dados/hospedagem.txt"));
         while (hoteis.hasNextLine()) {
             String hospedagemLinha = hoteis.nextLine();
             String[] hotel = hospedagemLinha.split(";");
@@ -37,7 +38,7 @@ public class CarregamentoDados {
 
     public static void carregarDadosVoos() throws FileNotFoundException, ParseException {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        Scanner voos = new Scanner(new File("src/main/java/org/example/dados/passagem.txt"));
+        Scanner voos = new Scanner(new File("Code/src/main/java/org/example/dados/passagem.txt"));
         while (voos.hasNextLine()) {
             String passagemLinha = voos.nextLine();
             String[] passagem = passagemLinha.split(";");
@@ -46,4 +47,14 @@ public class CarregamentoDados {
         }
     }
 
+    public static void carregarDadosPasseio() throws FileNotFoundException, ParseException {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Scanner tour = new Scanner(new File("Code/src/main/java/org/example/dados/passeio.txt"));
+        while (tour.hasNextLine()) {
+            String tourLinha = tour.nextLine();
+            String[] passeio = tourLinha.split(";");
+            Passeio novo = new Passeio((formato.parse(passeio[0])),formato.parse(passeio[1]),passeio[2],Double.parseDouble(passeio[3]),Double.parseDouble(passeio[4]));
+            Agencia.adicionarProduto(novo);
+        }
+    }
 }
