@@ -68,4 +68,12 @@ class PasseioTest {
         assertNotNull(output);
     }
 
+    @Test
+    @DisplayName("Verificar busca de variável localPasseio não deve retornar null")
+    void test08() {
+        tour.setLocalPasseio("BH");
+        var output = tour.getLocalPasseio();
+        assertNotNull(output);
+    }
+
 }

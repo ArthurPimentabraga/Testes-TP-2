@@ -1,6 +1,5 @@
 package org.example.produtos;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.text.ParseException;
@@ -10,7 +9,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Scanner;
 
-@Data
 @EqualsAndHashCode(callSuper = false)
 public class PassagemAeria extends Produto {
 
@@ -99,4 +97,11 @@ public class PassagemAeria extends Produto {
                 " | Preço base da passagem: " + this.precoPassagem;
     }
 
+    public int getnVoo() {
+        return nVoo;
+    }
+
+    public double getPrecoPassagem() {
+        return precoPassagem;
+    }
 }

@@ -1,6 +1,5 @@
 package org.example.produtos;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.text.ParseException;
@@ -10,7 +9,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Scanner;
 
-@Data
 @EqualsAndHashCode(callSuper = false)
 public class Hospedagem extends Produto {
 
@@ -88,6 +86,14 @@ public class Hospedagem extends Produto {
         return "Tipo: " + DESC + " | Código: " + this.codigo + " | Descrição: " + this.descricao +
                 " | Localidade: " + this.localidade + " | Valor diária: " + this.valorDiaria +
                 " | Nome Hotel: " + this.nomeHotel;
+    }
+
+    public double getValorDiaria() {
+        return valorDiaria;
+    }
+
+    public String getNomeHotel() {
+        return nomeHotel;
     }
 
 }
