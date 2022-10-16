@@ -17,10 +17,10 @@ Trabalho Prático 2 - Teste de Software
 
 # TO-DO
 
-- [✔️] Criar novas classes (ter os requisitos minimos pedidos para o trabalho)
-- [✔️] Desenvolver casos de teste (70% de cobertura, no mínimo)
-- [✔️] Realizar cálculos de cobertura de testes, e indicar como os cálculos de cobertura foram feitos (manualmente ou
+- [x] Criar novas classes (ter os requisitos minimos pedidos para o trabalho)
+- [x] Desenvolver casos de teste (70% de cobertura, no mínimo)
+- [x] Realizar cálculos de cobertura de testes, e indicar como os cálculos de cobertura foram feitos (manualmente ou
   via software);
-- [✔️] Preparar documento final;
+- [x] Preparar documento final;
 - [ ] Preparar apresentação;
-- [✔️] Melhorar código da agencia-turismo.
+- [x] Melhorar código da agencia-turismo.
