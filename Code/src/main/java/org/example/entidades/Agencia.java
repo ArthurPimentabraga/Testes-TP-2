@@ -1,6 +1,5 @@
 package org.example.entidades;
 
-import lombok.Data;
 import org.example.produtos.Hospedagem;
 import org.example.produtos.PassagemAeria;
 import org.example.produtos.Passeio;
@@ -10,7 +9,6 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-@Data
 public class Agencia {
 
     private int codigo;
@@ -167,4 +165,11 @@ public class Agencia {
         return false;
     }
 
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
 }

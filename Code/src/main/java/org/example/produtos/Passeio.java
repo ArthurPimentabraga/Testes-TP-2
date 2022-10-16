@@ -1,6 +1,5 @@
 package org.example.produtos;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.text.ParseException;
@@ -8,7 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-@Data
 @EqualsAndHashCode(callSuper = false)
 public class Passeio extends Produto {
 
@@ -84,6 +82,22 @@ public class Passeio extends Produto {
         return "Tipo: " + DESC + " | Código: " + this.codigo + " | Descrição: " + this.descricao +
                 " | Localidade: " + this.localidade + " | Valor KM: " + this.valorKm;
 
+    }
+
+    public double getDistanciaKm() {
+        return distanciaKm;
+    }
+
+    public double getValorKm() {
+        return valorKm;
+    }
+
+    public String getLocalPasseio() {
+        return localPasseio;
+    }
+
+    public void setLocalPasseio(String localPasseio) {
+        this.localPasseio = localPasseio;
     }
 
 }

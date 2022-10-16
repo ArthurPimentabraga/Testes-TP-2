@@ -231,4 +231,25 @@ class AgenciaTest {
         assertNull(output);
     }
 
+    //==============================================================
+    // Getter
+
+    @Test
+    @DisplayName("Verifica busca de variável codigo")
+    void test24() {
+        var agencia = new Agencia(1, "Agencia 1");
+        var output = agencia.getCodigo();
+        assertNotNull(output);
+        assertEquals(1, output);
+    }
+
+    @Test
+    @DisplayName("Verifica busca de variável nome")
+    void test25() {
+        var agencia = new Agencia(1, "Agencia 1");
+        var output = agencia.getNome();
+        assertNotNull(output);
+        assertEquals("Agencia 1", output);
+    }
+
 }

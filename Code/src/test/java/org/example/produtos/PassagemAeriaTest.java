@@ -95,15 +95,13 @@ class PassagemAeriaTest {
     @Test
     @DisplayName("Para um produto criado, a variável nVoo não pode ser nula")
     void test10() {
-        var output = passagemAeria.getNVoo();
-        assertNotNull(output);
+        assertNotNull( passagemAeria.getnVoo());
     }
 
     @Test
     @DisplayName("Para um produto criado, a variável precoPassagem não pode ser nula")
     void test11() {
-        var output = passagemAeria.getPrecoPassagem();
-        assertNotNull(output);
+        assertNotNull(passagemAeria.getPrecoPassagem());
     }
 
     @Test
