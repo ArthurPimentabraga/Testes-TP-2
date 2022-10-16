@@ -39,8 +39,8 @@ public class Cliente {
      * @throws ParseException
      *
      */
-    public void adicionarProduto(String destino,String opcao) {
-        try {
+    public void adicionarProduto(String destino,String opcao) throws ParseException {
+
             if (destino == null || destino.equals("")) {
                 System.out.println("Destino informado invalido!");
                 return;
@@ -62,58 +62,46 @@ public class Cliente {
             }
             System.out.println("Destino " + destino + " incluído");
             this.mudarCategoria();
-        } catch (Exception exception) {
-            System.out.println("Erro ao adicionar produto ao cliente: " + exception);
-        }
     }
     
     /** atualiza a pontuacao sempre que for adicionado um produto na lista do cliente*/
     public void agregarPontuacao(Produto p) {
-        try {
-            if (p == null) {
-                System.out.println("Pontuaço nao foi agregada. Produto informado invalido!");
-                return;
-            }
-
-            int aux = p.calcularPontuacao();
-
-            if(this.categoria != null){
-                this.pontuacao += this.categoria.calcularPontuacao(aux);
-                return;
-            }
-
-            this.pontuacao += aux;
-        } catch (Exception exception) {
-            System.out.println("Erro ao agregar pontuação ao cliente: " + exception);
+        if (p == null) {
+            System.out.println("Pontuaço nao foi agregada. Produto informado invalido!");
+            return;
         }
+
+        int aux = p.calcularPontuacao();
+
+        if(this.categoria != null){
+            this.pontuacao += this.categoria.calcularPontuacao(aux);
+            return;
+        }
+        this.pontuacao += aux;
     }
 
     /** verifica em qual categoria a pontuacao do cliente o enquadra*/
     public void mudarCategoria() {
-        try {
-            if(this.pontuacao >= Bronze.getPontuacaoMinima() && this.pontuacao < Prata.getPontuacaoMinima()) {
-                this.categoria = (ICategoria) new Bronze();
-                System.out.println("O cliente " + this.nome + " subiu de categoria. Categoria atual: Bronze");
-                return;
-            }
+        if(this.pontuacao >= Bronze.getPontuacaoMinima() && this.pontuacao < Prata.getPontuacaoMinima()) {
+            this.categoria = (ICategoria) new Bronze();
+            System.out.println("O cliente " + this.nome + " subiu de categoria. Categoria atual: Bronze");
+            return;
+        }
 
-            if(this.pontuacao >= Prata.getPontuacaoMinima() && this.pontuacao < Ouro.getPontuacaoMinima()) {
-                this.categoria = (ICategoria) new Prata();
-                System.out.println("O cliente " + this.nome + " subiu de categoria. Categoria atual: Prata");
-                return;
-            }
+        if(this.pontuacao >= Prata.getPontuacaoMinima() && this.pontuacao < Ouro.getPontuacaoMinima()) {
+            this.categoria = (ICategoria) new Prata();
+            System.out.println("O cliente " + this.nome + " subiu de categoria. Categoria atual: Prata");
+            return;
+        }
 
-            if(this.pontuacao >= Ouro.getPontuacaoMinima() && this.pontuacao < Diamante.PONTUACAO_MINIMA) {
-                this.categoria = (ICategoria) new Ouro();
-                System.out.println("O cliente " + this.nome + " subiu de categoria. Categoria atual: Ouro");
-            }
+        if(this.pontuacao >= Ouro.getPontuacaoMinima() && this.pontuacao < Diamante.PONTUACAO_MINIMA) {
+            this.categoria = (ICategoria) new Ouro();
+            System.out.println("O cliente " + this.nome + " subiu de categoria. Categoria atual: Ouro");
+        }
 
-            if(this.pontuacao >= Diamante.PONTUACAO_MINIMA) {
-                this.categoria = (ICategoria) new Diamante();
-                System.out.println("O cliente " + this.nome + " subiu de categoria. Categoria atual: Diamante");
-            }
-        } catch (Exception exception) {
-            System.out.println("Erro ao verificar/modificar categoria. Cliente " + this.nome + " - Pontuação atual: " + this.pontuacao);
+        if(this.pontuacao >= Diamante.PONTUACAO_MINIMA) {
+            this.categoria = (ICategoria) new Diamante();
+            System.out.println("O cliente " + this.nome + " subiu de categoria. Categoria atual: Diamante");
         }
     }
 

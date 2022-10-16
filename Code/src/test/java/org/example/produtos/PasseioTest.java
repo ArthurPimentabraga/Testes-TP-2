@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.text.ParseException;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -41,7 +42,7 @@ class PasseioTest {
 
     @Test
     @DisplayName("Para um destino igual a null, personalizaPasseio deve retornar null")
-    void test04() {
+    void test04() throws ParseException {
         var output = Passeio.personalizaPasseio(null);
         assertEquals(null, output);
     }

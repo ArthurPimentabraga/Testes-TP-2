@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -32,14 +33,14 @@ class ClienteTest {
 
     @Test
     @DisplayName("Para destino null não deve adicionar nenhum produto a lista")
-    void test01() {
+    void test01() throws ParseException {
         cliente.adicionarProduto(null, "H");
         assertEquals(cliente.getProdutos().size(), 0);
     }
 
     @Test
     @DisplayName("Para lista de produtos nula, deve cria-la")
-    void test04() {
+    void test04() throws ParseException {
         cliente.setProdutos(null);
         cliente.adicionarProduto("Belo Horizonte", "P");
         assertEquals(cliente.getProdutos().size(), 1);

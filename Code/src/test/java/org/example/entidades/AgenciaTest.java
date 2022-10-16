@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -240,7 +241,7 @@ class AgenciaTest {
 
     @Test
     @DisplayName("Para opção inexistente deve retornar null")
-    void test92() {
+    void test92() throws ParseException {
         var output = Agencia.personalizaProduto("Miami", "J");
         assertNull(output);
     }

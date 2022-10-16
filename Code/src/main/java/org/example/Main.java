@@ -51,7 +51,7 @@ public class Main {
         }
     }
 
-    private static void callFunctionality(int choose) {
+    private static void callFunctionality(int choose) throws ParseException {
         switch (choose) {
             case 1:
                 System.out.println("Informe o nome: ");
