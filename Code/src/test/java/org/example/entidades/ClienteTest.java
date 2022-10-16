@@ -1,5 +1,9 @@
 package org.example.entidades;
 
+import org.example.categoriasCliente.Bronze;
+import org.example.categoriasCliente.Diamante;
+import org.example.categoriasCliente.Ouro;
+import org.example.categoriasCliente.Prata;
 import org.example.produtos.PassagemAeria;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -49,16 +53,44 @@ class ClienteTest {
         assertDoesNotThrow(() -> cliente.agregarPontuacao(null));
     }
 
-    @Test
-    @DisplayName("Se ocorrer uma exception, não deve propaga-la")
-    void test03() {
-
-    }
-
 
     //============================================================
     // Mudar categoria
 
+    @Test
+    @DisplayName("Validar mudança de categoria para Bronze")
+    void test06() {
+        Cliente cliente = new Cliente("sem categoria","111.231.123-02");
+        cliente.setPontuacao(100);
+        cliente.mudarCategoria();
+        assertEquals(Bronze.class, cliente.getCategoria().getClass());
+    }
 
+    @Test
+    @DisplayName("Validar mudança de categoria para Prata")
+    void test07() {
+        Cliente cliente = new Cliente("bronze","111.231.123-02");
+        cliente.setPontuacao(500);
+        cliente.mudarCategoria();
+        assertEquals(Prata.class,cliente.getCategoria().getClass());
+    }
+
+    @Test
+    @DisplayName("Validar mudança de categoria para Ouro")
+    void test08() {
+        Cliente cliente = new Cliente("prata","111.231.123-02");
+        cliente.setPontuacao(1000);
+        cliente.mudarCategoria();
+        assertEquals(Ouro.class,cliente.getCategoria().getClass());
+    }
+
+    @Test
+    @DisplayName("Validar mudança de categoria para Diamante")
+    void test09() {
+        Cliente cliente = new Cliente("Ouro","111.231.123-02");
+        cliente.setPontuacao(1500);
+        cliente.mudarCategoria();
+        assertEquals(Diamante.class,cliente.getCategoria().getClass());
+    }
 
 }
