@@ -6,10 +6,8 @@ import lombok.EqualsAndHashCode;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 @Data

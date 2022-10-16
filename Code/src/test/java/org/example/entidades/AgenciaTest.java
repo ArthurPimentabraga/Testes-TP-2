@@ -6,16 +6,12 @@ import org.example.produtos.Passeio;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 
 class AgenciaTest {
 
@@ -42,8 +38,6 @@ class AgenciaTest {
                 new Date(), new Date(), "Rio de Janeiro", 30.0, 0
         );
 
-
-
         Agencia.produtos.add(hospedagem);
         Agencia.produtos.add(passagem);
         Agencia.adicionarProduto(passeio);
@@ -55,6 +49,7 @@ class AgenciaTest {
 
     //============================================================
     // Adicionar Cliente
+
     @Test
     @DisplayName("Para nome igual a null, adicionarCliente deve retornar null")
     void test01() {
@@ -103,6 +98,7 @@ class AgenciaTest {
 
     //==============================================================
     // Localizar Cliente
+
     @Test
     @DisplayName("Para cpf igual a null, localizarCliente deve retornar null")
     void test07() {
@@ -141,6 +137,7 @@ class AgenciaTest {
 
     //==============================================================
     // Localizar Produto
+
     @Test
     @DisplayName("Para lista de produtos vazia, localizar produto deve retornar null")
     void test12() {
@@ -186,14 +183,14 @@ class AgenciaTest {
 
     @Test
     @DisplayName("Para destino e opção validos para PassagemAeria, localizarProduto deve retornar o Produto desejado")
-    void test98() {
+    void test18() {
         var output = Agencia.localizarProduto("Orlando", "P");
         assertEquals(passagem, output);
     }
 
     @Test
     @DisplayName("Para destino e opção validos para PassagemAeria, localizarProduto deve retornar o Produto desejado")
-    void test99() {
+    void test19() {
         var output = Agencia.localizarProduto("Rio de Janeiro", "T");
         assertEquals(passeio, output);
     }
@@ -203,7 +200,7 @@ class AgenciaTest {
 
     @Test
     @DisplayName("Para lista de clientes nula, deve retornar TRUE")
-    void test97() {
+    void test20() {
         Agencia.clientes = null;
         var output = Agencia.validaListaClientes();
         assertTrue(output);
@@ -211,7 +208,7 @@ class AgenciaTest {
 
     @Test
     @DisplayName("Para lista de clientes vazia, deve retornar TRUE")
-    void test96() {
+    void test21() {
         Agencia.clientes = new ArrayList<>();
         var output = Agencia.validaListaClientes();
         assertTrue(output);
@@ -219,7 +216,7 @@ class AgenciaTest {
 
     @Test
     @DisplayName("Para lista de clientes válida, deve retornar FALSE")
-    void test95() {
+    void test22() {
         var output = Agencia.validaListaClientes();
         assertFalse(output);
     }
@@ -227,21 +224,9 @@ class AgenciaTest {
     //==============================================================
     // Personaliza produto
 
-//    @Test
-//    @DisplayName("Para opção H deve criar uma nova hospedagem")
-//    void test94() {
-//
-//    }
-//
-//    @Test
-//    @DisplayName("Para opção P deve criar uma nova Passagem Aérea")
-//    void test93() {
-//
-//    }
-
     @Test
     @DisplayName("Para opção inexistente deve retornar null")
-    void test92() throws ParseException {
+    void test23() throws ParseException {
         var output = Agencia.personalizaProduto("Miami", "J");
         assertNull(output);
     }

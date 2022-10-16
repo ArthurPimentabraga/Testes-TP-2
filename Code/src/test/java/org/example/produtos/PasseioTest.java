@@ -67,4 +67,5 @@ class PasseioTest {
         var output = Passeio.arquirirPasseio(new Date(), new Date(), "Teste");
         assertNotNull(output);
     }
+
 }
