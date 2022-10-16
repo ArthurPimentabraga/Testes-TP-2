@@ -15,19 +15,6 @@ Trabalho Prático 2 - Teste de Software
 
 ---
 
-# Executando testes
-
-Para executar o teste de cobertura é só executar o seguinte código na linha de comando:
-
-```SHELL
-mvn test-compile org.pitest:pitest-maven:mutationCoverage
-```
-
-E um relatório .html será gerado na /target.
-
-
----
-
 # TO-DO
 
 - [ ] Criar novas classes (ter os requisitos minimos pedidos para o trabalho)
