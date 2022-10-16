@@ -19,8 +19,8 @@ public class Agencia {
     public static ArrayList<Produto> produtos = new ArrayList<>();
     static Scanner teclado = new Scanner(System.in);
 
-    public Agencia(int cogido, String nome) {
-        this.codigo = cogido;
+    public Agencia(int codigo, String nome) {
+        this.codigo = codigo;
         this.nome = nome;
     }
 
