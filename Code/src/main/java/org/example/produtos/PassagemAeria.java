@@ -3,6 +3,7 @@ package org.example.produtos;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -49,54 +50,42 @@ public class PassagemAeria extends Produto {
         return this.pontuacao;
     }
 
-    public static Produto personalizaPassagem(String destino){
+    public static Produto personalizaPassagem(String destino) throws ParseException {
         Scanner teclado = null;
-        try {
-            teclado = new Scanner(System.in);
 
-            if (destino == null || destino.equals("")) return null;
+        teclado = new Scanner(System.in);
 
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            Date dataAtual = new Date();
-            System.out.println("Data de partida (dd/mm/yyyy): ");
-            String dataIn = teclado.nextLine();
-            Date inicio = sdf.parse(dataIn);
+        if (destino == null || destino.equals("")) return null;
 
-            while (inicio.compareTo(dataAtual) < 0) {
-                System.out.println("Partida não pode ser uma data que já passou.");
-                System.out.println("Data partida: ");
-                inicio = sdf.parse(teclado.nextLine());
-            }
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date dataAtual = new Date();
+        System.out.println("Data de partida (dd/mm/yyyy): ");
+        String dataIn = teclado.nextLine();
+        Date inicio = sdf.parse(dataIn);
 
-            System.out.println("Data de retorno (dd/mm/yyyy): ");
-            String dataOut = teclado.nextLine();
-            Date retorno = sdf.parse(dataOut);
-
-            // Viola o single responsibility?
-            while (retorno.compareTo(inicio) < 0) {
-                System.out.println("Retorno não pode ser anterior à ida.");
-                System.out.println("Data retorno: ");
-                retorno = sdf.parse(teclado.nextLine());
-            }
-
-            System.out.println("Voo escolhido: ");
-            int voo = teclado.nextInt();
-
-            System.out.println("Preço base do voo: ");
-            double precoBase = teclado.nextDouble();
-
-            return arquirirPassagemAeria(inicio, retorno, destino, voo, precoBase);
-
-        } catch (NoSuchElementException noSuchElementException) {
-            System.out.println("Erro ao ler entrada. Nenhuma informaçao encontrada! Erro: " + noSuchElementException);
-            return null;
-        } catch (IllegalStateException illegalStateException) {
-            System.out.println("Erro ao ler entrada. Problema interno! Erro: " + illegalStateException);
-            return null;
-        } catch (Exception exception) {
-            System.out.println("Erro ao personalizar passagem aéria!");
-            return null;
+        while (inicio.compareTo(dataAtual) < 0) {
+            System.out.println("Partida não pode ser uma data que já passou.");
+            System.out.println("Data partida: ");
+            inicio = sdf.parse(teclado.nextLine());
         }
+
+        System.out.println("Data de retorno (dd/mm/yyyy): ");
+        String dataOut = teclado.nextLine();
+        Date retorno = sdf.parse(dataOut);
+
+        while (retorno.compareTo(inicio) < 0) {
+            System.out.println("Retorno não pode ser anterior à ida.");
+            System.out.println("Data retorno: ");
+            retorno = sdf.parse(teclado.nextLine());
+        }
+
+        System.out.println("Voo escolhido: ");
+        int voo = teclado.nextInt();
+
+        System.out.println("Preço base do voo: ");
+        double precoBase = teclado.nextDouble();
+
+        return arquirirPassagemAeria(inicio, retorno, destino, voo, precoBase);
     }
 
     public static PassagemAeria arquirirPassagemAeria(Date inicio, Date retorno, String destino, int voo, double precoBase) {

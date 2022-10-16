@@ -3,6 +3,7 @@ package org.example.produtos;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.NoSuchElementException;
@@ -30,7 +31,6 @@ public class Passeio extends Produto {
     @Override
     public double calcularPreco() {
         return valorKm * distanciaKm + VALOR_MINIMO ;
-
     }
 
     @Override
@@ -38,54 +38,41 @@ public class Passeio extends Produto {
         return (int) (calcularPreco()*0.1);
     }
 
-    public static Produto personalizaPasseio(String destino) {
+    public static Produto personalizaPasseio(String destino) throws ParseException {
         Scanner teclado = null;
-        try {
-            if (destino == null || destino.equals("")) return null;
 
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            Date dataAtual = new Date();
+        if (destino == null || destino.equals("")) return null;
 
-            teclado = new Scanner(System.in);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date dataAtual = new Date();
 
-            System.out.println("Data de partida (dd/mm/yyyy): ");
-            String dataIn = teclado.nextLine();
-            Date inicio = sdf.parse(dataIn);
+        teclado = new Scanner(System.in);
 
-            while (inicio.compareTo(dataAtual) < 0) {
-                System.out.println("Partida não pode ser uma data que já passou.");
-                System.out.println("Data partida: ");
-                inicio = sdf.parse(teclado.nextLine());
-            }
+        System.out.println("Data de partida (dd/mm/yyyy): ");
+        String dataIn = teclado.nextLine();
+        Date inicio = sdf.parse(dataIn);
 
-            System.out.println("Data de retorno (dd/mm/yyyy): ");
-            String dataOut = teclado.nextLine();
-            Date retorno = sdf.parse(dataOut);
-
-
-            while (retorno.compareTo(inicio) < 0) {
-                System.out.println("Retorno não pode ser anterior à ida.");
-                System.out.println("Data retorno: ");
-                retorno = sdf.parse(teclado.nextLine());
-            }
-
-            System.out.println("Passeio escolhido: ");
-            String passeio = teclado.nextLine();
-
-            return arquirirPasseio(inicio, retorno, passeio);
-
-        } catch (NoSuchElementException noSuchElementException) {
-            System.out.println("Erro ao ler entrada. Nenhuma informaçao encontrada! Erro: " + noSuchElementException);
-            return null;
-        } catch (IllegalStateException illegalStateException) {
-            System.out.println("Erro ao ler entrada. Problema interno! Erro: " + illegalStateException);
-            return null;
-        } catch (Exception exception) {
-            System.out.println("Erro ao personalizar passeio!");
-            return null;
+        while (inicio.compareTo(dataAtual) < 0) {
+            System.out.println("Partida não pode ser uma data que já passou.");
+            System.out.println("Data partida: ");
+            inicio = sdf.parse(teclado.nextLine());
         }
 
+        System.out.println("Data de retorno (dd/mm/yyyy): ");
+        String dataOut = teclado.nextLine();
+        Date retorno = sdf.parse(dataOut);
 
+
+        while (retorno.compareTo(inicio) < 0) {
+            System.out.println("Retorno não pode ser anterior à ida.");
+            System.out.println("Data retorno: ");
+            retorno = sdf.parse(teclado.nextLine());
+        }
+
+        System.out.println("Passeio escolhido: ");
+        String passeio = teclado.nextLine();
+
+        return arquirirPasseio(inicio, retorno, passeio);
     }
 
     public static Passeio arquirirPasseio(Date inicio, Date retorno, String passeio) {

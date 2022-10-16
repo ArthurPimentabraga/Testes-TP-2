@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.text.ParseException;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,7 +21,7 @@ class HospedagemTest {
 
     @Test
     @DisplayName("Para destino igual a nulo, personalizaHospedagem deve retornar null")
-    void test01() {
+    void test01() throws ParseException {
         var output = Hospedagem.personalizaHospedagem(null);
         assertNull(output);
     }

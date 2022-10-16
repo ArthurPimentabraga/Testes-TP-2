@@ -3,6 +3,7 @@ package org.example.produtos;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -28,21 +29,13 @@ public class Hospedagem extends Produto {
 
     @Override
     public double calcularPreco() {
-        try {
-            SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
-            LocalDate dateRetorno = LocalDate.parse(formatDate.format(this.retorno));
-            LocalDate dateInicio = LocalDate.parse(formatDate.format(this.inicio));
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
+        LocalDate dateRetorno = LocalDate.parse(formatDate.format(this.retorno));
+        LocalDate dateInicio = LocalDate.parse(formatDate.format(this.inicio));
 
-            long noOfDaysBetween = ChronoUnit.DAYS.between(dateInicio, dateRetorno);
+        long noOfDaysBetween = ChronoUnit.DAYS.between(dateInicio, dateRetorno);
 
-            return (double)noOfDaysBetween * valorDiaria;
-        } catch (DateTimeParseException dateTimeParseException) {
-            System.out.println("Erro ao converter data. Problema interno! Será mantido o valor da diária! Erro: " + dateTimeParseException);
-            return this.valorDiaria;
-        } catch (Exception exception) {
-            System.out.println("Erro ao calcular preço. Será mantido o valor da diária! Erro: " + exception);
-            return this.valorDiaria;
-        }
+        return (double)noOfDaysBetween * valorDiaria;
     }
 
     @Override
@@ -50,54 +43,41 @@ public class Hospedagem extends Produto {
         return (int) (calcularPreco()*0.1);
     }
 
-    public static Produto personalizaHospedagem(String destino) {
+    public static Produto personalizaHospedagem(String destino) throws ParseException {
         Scanner teclado = null;
-        try {
-            if (destino == null || destino.equals("")) return null;
 
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            Date dataAtual = new Date();
+        if (destino == null || destino.equals("")) return null;
 
-            teclado = new Scanner(System.in);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date dataAtual = new Date();
 
-            System.out.println("Data de partida (dd/mm/yyyy): ");
-            String dataIn = teclado.nextLine();
-            Date inicio = sdf.parse(dataIn);
+        teclado = new Scanner(System.in);
 
-            while (inicio.compareTo(dataAtual) < 0) {
-                System.out.println("Partida não pode ser uma data que já passou.");
-                System.out.println("Data partida: ");
-                inicio = sdf.parse(teclado.nextLine());
-            }
+        System.out.println("Data de partida (dd/mm/yyyy): ");
+        String dataIn = teclado.nextLine();
+        Date inicio = sdf.parse(dataIn);
 
-            System.out.println("Data de retorno (dd/mm/yyyy): ");
-            String dataOut = teclado.nextLine();
-            Date retorno = sdf.parse(dataOut);
-
-            // Viola o single responsibility?
-            while (retorno.compareTo(inicio) < 0) {
-                System.out.println("Retorno não pode ser anterior à ida.");
-                System.out.println("Data retorno: ");
-                retorno = sdf.parse(teclado.nextLine());
-            }
-
-            System.out.println("Hotel escolhido: ");
-            String hotel = teclado.nextLine();
-
-            System.out.println("Valor diaria nesse hotel: " + VALOR_DIARIA_PADRAO);
-
-            return arquirirHospedagem(inicio, retorno, destino, hotel);
-
-        } catch (NoSuchElementException noSuchElementException) {
-            System.out.println("Erro ao ler entrada. Nenhuma informaçao encontrada! Erro: " + noSuchElementException);
-            return null;
-        } catch (IllegalStateException illegalStateException) {
-            System.out.println("Erro ao ler entrada. Problema interno! Erro: " + illegalStateException);
-            return null;
-        } catch (Exception exception) {
-            System.out.println("Erro ao personalizar hospedagem!");
-            return null;
+        while (inicio.compareTo(dataAtual) < 0) {
+            System.out.println("Partida não pode ser uma data que já passou.");
+            System.out.println("Data partida: ");
+            inicio = sdf.parse(teclado.nextLine());
         }
+
+        System.out.println("Data de retorno (dd/mm/yyyy): ");
+        String dataOut = teclado.nextLine();
+        Date retorno = sdf.parse(dataOut);
+
+        while (retorno.compareTo(inicio) < 0) {
+            System.out.println("Retorno não pode ser anterior à ida.");
+            System.out.println("Data retorno: ");
+            retorno = sdf.parse(teclado.nextLine());
+        }
+
+        System.out.println("Hotel escolhido: ");
+        String hotel = teclado.nextLine();
+
+        System.out.println("Valor diaria nesse hotel: " + VALOR_DIARIA_PADRAO);
+        return arquirirHospedagem(inicio, retorno, destino, hotel);
     }
 
     public static Hospedagem arquirirHospedagem(Date inicio, Date retorno, String destino, String hotel) {

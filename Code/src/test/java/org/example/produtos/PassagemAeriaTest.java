@@ -32,7 +32,7 @@ class PassagemAeriaTest {
 
     @Test
     @DisplayName("Para destino igual a nulo, personalizaPassagem deve retornar null")
-    void test01() {
+    void test01() throws ParseException {
         var output = PassagemAeria.personalizaPassagem(null);
         assertNull(output);
     }
@@ -71,14 +71,14 @@ class PassagemAeriaTest {
 
     @Test
     @DisplayName("Para um destino igual a null, personalizaPassagem deve retornar null")
-    void test06() {
+    void test06() throws ParseException {
         var output = PassagemAeria.personalizaPassagem(null);
         assertEquals(null, output);
     }
 
     @Test
     @DisplayName("Para um destino igual a String vazia, personalizaPassagem deve retornar null")
-    void test07() {
+    void test07() throws ParseException {
         var output = PassagemAeria.personalizaPassagem("");
         assertEquals(null, output);
     }
