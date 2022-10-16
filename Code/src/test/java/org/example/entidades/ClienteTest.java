@@ -40,7 +40,7 @@ class ClienteTest {
 
     @Test
     @DisplayName("Para lista de produtos nula, deve cria-la")
-    void test04() throws ParseException {
+    void test02() throws ParseException {
         cliente.setProdutos(null);
         cliente.adicionarProduto("Belo Horizonte", "P");
         assertEquals(cliente.getProdutos().size(), 1);
@@ -48,9 +48,10 @@ class ClienteTest {
 
     //============================================================
     // Agregar pontuação
+
     @Test
     @DisplayName("Para produto nulo, não deve fazer nada")
-    void test02() {
+    void test03() {
         assertDoesNotThrow(() -> cliente.agregarPontuacao(null));
     }
 
@@ -60,7 +61,7 @@ class ClienteTest {
 
     @Test
     @DisplayName("Validar mudança de categoria para Bronze")
-    void test06() {
+    void test04() {
         Cliente cliente = new Cliente("sem categoria","111.231.123-02");
         cliente.setPontuacao(100);
         cliente.mudarCategoria();
@@ -69,7 +70,7 @@ class ClienteTest {
 
     @Test
     @DisplayName("Validar mudança de categoria para Prata")
-    void test07() {
+    void test05() {
         Cliente cliente = new Cliente("bronze","111.231.123-02");
         cliente.setPontuacao(500);
         cliente.mudarCategoria();
@@ -78,7 +79,7 @@ class ClienteTest {
 
     @Test
     @DisplayName("Validar mudança de categoria para Ouro")
-    void test08() {
+    void test06() {
         Cliente cliente = new Cliente("prata","111.231.123-02");
         cliente.setPontuacao(1000);
         cliente.mudarCategoria();
@@ -87,7 +88,7 @@ class ClienteTest {
 
     @Test
     @DisplayName("Validar mudança de categoria para Diamante")
-    void test09() {
+    void test07() {
         Cliente cliente = new Cliente("Ouro","111.231.123-02");
         cliente.setPontuacao(1500);
         cliente.mudarCategoria();
